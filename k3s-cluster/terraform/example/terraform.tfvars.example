@@ -1,0 +1,7 @@
+# Copie para terraform.tfvars (git-ignorado) e preencha com valores reais.
+# NUNCA versionar terraform.tfvars.
+
+pm_api_url   = "https://<SEU_HOST_PROXMOX>:8006/"
+pm_api_token = "terraform@pve!terraform-token=<SEU_SECRET_AQUI>"
+
+k3s_token = "<GERE_COM_openssl_rand_-hex_32>"

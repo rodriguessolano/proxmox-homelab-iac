@@ -1,0 +1,18 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+*.auto.tfvars
+crash.log
+crash.*.log
+
+# Planos salvos podem conter segredos em claro no binário — nunca versionar.
+tfplan
+tfplan.*
+*.tfplan
+
+# Chaves, caso alguém gere dentro do repo por engano.
+*.pem
+id_ed25519*
+id_rsa*
+!*.pub
