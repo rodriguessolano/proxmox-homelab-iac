@@ -13,9 +13,9 @@ documentação (`10.0.10.0/24`) no lugar de valores reais.
 
 ## O que tem aqui
 
-| Pasta | Conteúdo |
+| Pasta / repo | Conteúdo |
 |---|---|
-| [`proxmox-templates/debian-12/`](./proxmox-templates/debian-12/) | Runbook: como construir um template cloud-init de Debian 12 no Proxmox (imagem, customização, conversão em template) |
+| [`proxmox-templates`](https://github.com/rodriguessolano/proxmox-templates) | Repositório irmão: runbooks de como construir os templates cloud-init (Debian, Ubuntu, RHEL-family, Windows) que os módulos abaixo esperam encontrar |
 | [`k3s-cluster/`](./k3s-cluster/) | Módulos Terraform (provider [`bpg/proxmox`](https://registry.terraform.io/providers/bpg/proxmox)) para provisionar um cluster k3s (1 control-plane + N workers) a partir de um template cloud-init |
 
 Este repositório cresce junto com o lab: cada peça nova (CI/CD self-hosted,
@@ -98,8 +98,8 @@ flowchart TB
 
 Cada pasta tem seu próprio README com o passo a passo. Em resumo:
 
-1. Construa (ou já tenha) um template cloud-init no Proxmox — ver
-   [`proxmox-templates/debian-12/`](./proxmox-templates/debian-12/).
+1. Construa (ou já tenha) um template cloud-init no Proxmox — ver o
+   repositório [`proxmox-templates`](https://github.com/rodriguessolano/proxmox-templates).
 2. Copie `k3s-cluster/terraform/example/terraform.tfvars.example` para
    `terraform.tfvars`, preencha com os dados do seu ambiente (nunca
    versionar esse arquivo — já vem no `.gitignore`).
