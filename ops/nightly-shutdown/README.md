@@ -48,4 +48,27 @@ não feito ainda).
 
 - Testar uma noite real antes de confiar 100% (primeira execução, ver se o
   Telegram chega e se os hosts desligam limpo).
-- Considerar Wake-on-LAN pra religar via rede em vez de botão físico.
+- Pegar o MAC real do `proxmox` (está desligado agora) e preencher em
+  `scripts/wol.py` → `KNOWN_HOSTS["proxmox"]`.
+- Habilitar `Wake on LAN`/`Deep Sleep Control` na BIOS dos dois hosts
+  (passo a passo documentado abaixo) — ainda não feito.
+
+## Religando via Wake-on-LAN (`scripts/wol.py`)
+
+Se habilitar WOL na BIOS (`Power Management` → `Deep Sleep Control: Disabled`
++ `Wake on LAN: LAN Only`), dá pra religar de qualquer PC/WSL na mesma rede:
+
+```bash
+python3 scripts/wol.py proxmox     # ou proxmox2
+```
+
+Sem dependências externas — usa só `socket` da stdlib. Os MACs ficam
+hardcoded no topo do script (`KNOWN_HOSTS`), editar lá se a placa de rede
+mudar. Pra usar do celular, qualquer app "Wake On Lan" da loja de
+aplicativos funciona — só precisa configurar o MAC address manualmente
+(mesmo valor do `KNOWN_HOSTS`) e estar na mesma rede Wi-Fi/LAN.
+
+**Limitação importante:** broadcast UDP não atravessa a internet — só
+funciona com o celular/PC já conectado na mesma rede local (Wi-Fi de casa,
+por exemplo). Pra religar de fora de casa, precisaria de VPN até a rede
+local primeiro (ex: Tailscale, que já está instalado no proxmox2).
